@@ -1,0 +1,3 @@
+﻿StringField: tset a si sihT
+IntField: 1234
+NullValue: null

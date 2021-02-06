@@ -1,0 +1,3 @@
+﻿StringField: This is a test
+IntField: 1234
+NullValue: null
