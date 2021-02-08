@@ -6,7 +6,8 @@ namespace PrettyObject
     {
         public static string PrettyPrint<T>(this T objectToPrint)
         {
-            Func<string, object, string> transformer = (name, value) => value.ToNullSafeString();
+            Func<string, object, string> transformer = 
+                (_, value) => value.ToNullSafeString();
 
             return PrettyPrint(objectToPrint, transformer);
         }

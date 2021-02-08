@@ -27,9 +27,7 @@ namespace PrettyObjectUnit
         {
             var testObject = new TestObject();
 
-            var objectFieldOutput = PrettyPrinter.PrettyPrint(testObject);
-
-            Approvals.Verify(objectFieldOutput);
+            Approvals.Verify(testObject.PrettyPrint());
         }
 
         private string ReverseString(string value)
@@ -45,13 +43,13 @@ namespace PrettyObjectUnit
         {
             var testObject = new TestObject();
 
-            var objectFieldOutput = PrettyPrinter.PrettyPrint(
-                testObject,
-                new {
-                    StringField = new Func<string, string>((value) => ReverseString(value))
-                });
+            var verificationOutput = testObject.PrettyPrint(new
+            {
+                StringField = new Func<string, string>((value)
+                    => ReverseString(value))
+            });
 
-            Approvals.Verify(objectFieldOutput);
+            Approvals.Verify(verificationOutput);
         }
 
 
@@ -66,7 +64,7 @@ namespace PrettyObjectUnit
                 {
                     case "StringField":
                         var stringValue = (string)value;
-                        
+
                         var charArray = stringValue.ToCharArray();
                         Array.Reverse(charArray);
 
