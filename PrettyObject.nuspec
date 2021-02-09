@@ -2,18 +2,17 @@
 <package>
   <metadata>
     <id>PrettyObject</id>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <title>PrettyObject</title>
     <authors>Chris Stead</authors>
     <owners>Chris Stead</owners>
     <license type="expression">MIT</license>
     <projectUrl>https://github.com/cmstead/pretty-object</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>A description of your package</description>
+    <description>A utility for producing a simple string representation of an object in C#</description>
     <releaseNotes>Initial 1.0.0 release</releaseNotes>
-    <copyright>Copyright 2018 CompanyLtd</copyright>
     <tags>testing, tests, TDD, golden-master testing, approval tests</tags>
-    <summary> A summary of your package </summary>
+    <summary>Pretty Object is an object pretty-printer for handling Golden Master test output. Pretty Object, out of the box, will print all accessible fields in an object as a new-line delimited output. You can also provide transformations for any field values which either should be ignored, or might need to be modified, such as DateTime comparisons.</summary>
     <dependencies>
       <group targetFramework="netstandard2.0" />
     </dependencies>

@@ -23,20 +23,28 @@ namespace PrettyObject
         {
             var finalValue = fieldValue;
 
-            var typeOfObject = transformer.GetType();
-            var transformationFieldProperty = typeOfObject.GetProperty(fieldName);
-
-            if (transformationFieldProperty != null)
+            try
             {
-                var transformationFunc = transformationFieldProperty.GetValue(transformer);
+                var typeOfObject = transformer.GetType();
+                var transformationFieldProperty = typeOfObject.GetProperty(fieldName);
 
-                var transformationFuncType = transformationFunc.GetType();
+                if (transformationFieldProperty != null)
+                {
+                    var transformationFunc = transformationFieldProperty.GetValue(transformer);
 
-                var transformerMethod = transformationFuncType.GetMethod("Invoke");
-                var transformerArguments = new[] { fieldValue };
+                    var transformationFuncType = transformationFunc.GetType();
 
-                finalValue = transformerMethod.Invoke(transformationFunc, transformerArguments);
+                    var transformerMethod = transformationFuncType.GetMethod("Invoke");
+                    var transformerArguments = new[] { fieldValue };
+
+                    finalValue = transformerMethod.Invoke(transformationFunc, transformerArguments);
+                }
             }
+            catch (Exception)
+            {
+                // property missing, that's okay                
+            }
+            
 
             return finalValue.ToStringOrNull();
         }
